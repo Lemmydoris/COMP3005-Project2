@@ -1,0 +1,8 @@
+rule,rule_name,all_rules_io,disabled_rule_io,difference
+1,split conjunctions,1767,1806,39
+2,selection pushdown,1767,1828,61
+3,cross/select to join,1767,1767,0
+4,push through rename/union,1767,1767,0
+5,push below group_by,1767,1767,0
+6,projection pushdown,1767,1916,149
+7,cleanup,1767,1767,0

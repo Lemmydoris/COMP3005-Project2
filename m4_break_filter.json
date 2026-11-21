@@ -1,0 +1,37 @@
+{
+  "op": "rename",
+  "to": "c",
+  "child": {
+    "op": "project",
+    "columns": [
+      "CorrCustomers.id"
+    ],
+    "child": {
+      "op": "filter",
+      "condition": "CorrCustomers.region = 1",
+      "child": {
+        "op": "project",
+        "columns": [
+          "CorrCustomers.id",
+          "CorrCustomers.region"
+        ],
+        "child": {
+          "op": "filter",
+          "condition": "CorrCustomers.segment = 1",
+          "child": {
+            "op": "project",
+            "columns": [
+              "CorrCustomers.id",
+              "CorrCustomers.region",
+              "CorrCustomers.segment"
+            ],
+            "child": {
+              "op": "seqscan",
+              "table": "CorrCustomers"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+project                      tuples_out=1000   comparisons=0        reads=0      writes=0
+  nested_loop_join (p.supplier_id = s.supplier_id) tuples_out=1000   comparisons=20000    reads=0      writes=0
+    project                      tuples_out=1000   comparisons=0        reads=0      writes=0
+      filter (p.category = 3)      tuples_out=1000   comparisons=20000    reads=0      writes=0
+        project                      tuples_out=20000  comparisons=0        reads=0      writes=0
+          nested_loop_join (o.product_id = p.product_id) tuples_out=20000  comparisons=40000000 reads=0      writes=0
+            Rename                       tuples_out=2000   comparisons=0        reads=0      writes=0
+              project                      tuples_out=2000   comparisons=0        reads=0      writes=0
+                seqscan Products             tuples_out=2000   comparisons=0        reads=11     writes=0
+            Rename                       tuples_out=20000  comparisons=0        reads=0      writes=0
+              project                      tuples_out=20000  comparisons=0        reads=0      writes=0
+                seqscan Orders               tuples_out=20000  comparisons=0        reads=100    writes=0
+    project                      tuples_out=20     comparisons=0        reads=0      writes=0
+      filter (s.region = 2)        tuples_out=20     comparisons=200      reads=0      writes=0
+        Rename                       tuples_out=200    comparisons=0        reads=0      writes=0
+          project                      tuples_out=200    comparisons=0        reads=0      writes=0
+            seqscan Suppliers            tuples_out=200    comparisons=0        reads=2      writes=0

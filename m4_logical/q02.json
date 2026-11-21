@@ -1,0 +1,1 @@
+{"op":"project","columns":["p.product_id"],"child":{"op":"select","condition":"p.price > 500","child":{"op":"rename","to":"p","child":{"op":"scan","table":"Products"}}}}

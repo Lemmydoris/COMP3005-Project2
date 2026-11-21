@@ -1,0 +1,93 @@
+{
+  "op": "project",
+  "columns": [
+    "c.cust_id",
+    "o.order_id",
+    "p.product_id"
+  ],
+  "child": {
+    "op": "nested_loop_join",
+    "condition": "o.product_id = p.product_id",
+    "left": {
+      "op": "project",
+      "columns": [
+        "c.cust_id",
+        "o.order_id",
+        "o.product_id"
+      ],
+      "child": {
+        "op": "filter",
+        "condition": "c.region = 1",
+        "child": {
+          "op": "project",
+          "columns": [
+            "c.cust_id",
+            "c.region",
+            "o.order_id",
+            "o.product_id"
+          ],
+          "child": {
+            "op": "nested_loop_join",
+            "condition": "c.cust_id = o.cust_id",
+            "left": {
+              "op": "rename",
+              "to": "c",
+              "child": {
+                "op": "project",
+                "columns": [
+                  "Customers.cust_id",
+                  "Customers.region"
+                ],
+                "child": {
+                  "op": "seqscan",
+                  "table": "Customers"
+                }
+              }
+            },
+            "right": {
+              "op": "rename",
+              "to": "o",
+              "child": {
+                "op": "project",
+                "columns": [
+                  "Orders.order_id",
+                  "Orders.cust_id",
+                  "Orders.product_id"
+                ],
+                "child": {
+                  "op": "seqscan",
+                  "table": "Orders"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "right": {
+      "op": "project",
+      "columns": [
+        "p.product_id"
+      ],
+      "child": {
+        "op": "filter",
+        "condition": "p.category = 3",
+        "child": {
+          "op": "rename",
+          "to": "p",
+          "child": {
+            "op": "project",
+            "columns": [
+              "Products.product_id",
+              "Products.category"
+            ],
+            "child": {
+              "op": "seqscan",
+              "table": "Products"
+            }
+          }
+        }
+      }
+    }
+  }
+}

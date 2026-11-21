@@ -1,0 +1,1 @@
+{"op":"project","columns":["o.order_id","p.product_id"],"child":{"op":"select","condition":"o.amount < 100 AND p.price > 700","child":{"op":"join","condition":"o.product_id = p.product_id","left":{"op":"rename","to":"o","child":{"op":"scan","table":"Orders"}},"right":{"op":"rename","to":"p","child":{"op":"scan","table":"Products"}}}}}

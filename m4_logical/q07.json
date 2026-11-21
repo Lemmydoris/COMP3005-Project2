@@ -1,0 +1,1 @@
+{"op":"project","columns":["o.order_id","p.product_id"],"child":{"op":"select","condition":"p.category = 3","child":{"op":"join","condition":"o.product_id = p.product_id","left":{"op":"rename","to":"o","child":{"op":"scan","table":"Orders"}},"right":{"op":"rename","to":"p","child":{"op":"scan","table":"Products"}}}}}

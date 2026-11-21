@@ -1,0 +1,70 @@
+{
+  "op": "project",
+  "columns": [
+    "o.order_id",
+    "p.product_id"
+  ],
+  "child": {
+    "op": "project",
+    "columns": [
+      "o.order_id",
+      "p.product_id"
+    ],
+    "child": {
+      "op": "nested_loop_join",
+      "condition": "o.product_id = p.product_id",
+      "left": {
+        "op": "project",
+        "columns": [
+          "p.product_id"
+        ],
+        "child": {
+          "op": "filter",
+          "condition": "p.price > 700",
+          "child": {
+            "op": "rename",
+            "to": "p",
+            "child": {
+              "op": "project",
+              "columns": [
+                "Products.product_id",
+                "Products.price"
+              ],
+              "child": {
+                "op": "seqscan",
+                "table": "Products"
+              }
+            }
+          }
+        }
+      },
+      "right": {
+        "op": "project",
+        "columns": [
+          "o.order_id",
+          "o.product_id"
+        ],
+        "child": {
+          "op": "filter",
+          "condition": "o.amount < 100",
+          "child": {
+            "op": "rename",
+            "to": "o",
+            "child": {
+              "op": "project",
+              "columns": [
+                "Orders.order_id",
+                "Orders.product_id",
+                "Orders.amount"
+              ],
+              "child": {
+                "op": "seqscan",
+                "table": "Orders"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

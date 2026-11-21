@@ -1,0 +1,44 @@
+{
+  "op": "project",
+  "columns": [
+    "o.order_id",
+    "p.product_id",
+    "s.supplier_id"
+  ],
+  "child": {
+    "op": "filter",
+    "condition": "p.category = 3 AND s.region = 2",
+    "child": {
+      "op": "nested_loop_join",
+      "condition": "p.supplier_id = s.supplier_id",
+      "left": {
+        "op": "nested_loop_join",
+        "condition": "o.product_id = p.product_id",
+        "left": {
+          "op": "rename",
+          "to": "o",
+          "child": {
+            "op": "seqscan",
+            "table": "Orders"
+          }
+        },
+        "right": {
+          "op": "rename",
+          "to": "p",
+          "child": {
+            "op": "seqscan",
+            "table": "Products"
+          }
+        }
+      },
+      "right": {
+        "op": "rename",
+        "to": "s",
+        "child": {
+          "op": "seqscan",
+          "table": "Suppliers"
+        }
+      }
+    }
+  }
+}

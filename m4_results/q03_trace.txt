@@ -1,0 +1,7 @@
+Rename                       tuples_out=500    comparisons=0        reads=0      writes=0
+  project                      tuples_out=500    comparisons=0        reads=0      writes=0
+    filter (Customers.region = 1) tuples_out=500    comparisons=750      reads=0      writes=0
+      project                      tuples_out=750    comparisons=0        reads=0      writes=0
+        filter (Customers.segment = 1) tuples_out=750    comparisons=5000     reads=0      writes=0
+          project                      tuples_out=5000   comparisons=0        reads=0      writes=0
+            seqscan Customers            tuples_out=5000   comparisons=0        reads=26     writes=0

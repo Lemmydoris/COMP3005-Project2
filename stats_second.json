@@ -1,0 +1,19 @@
+{
+  "columns": {
+    "a": {
+      "hist": [],
+      "max": null,
+      "min": null,
+      "ndv": 0
+    },
+    "b": {
+      "hist": [],
+      "max": null,
+      "min": null,
+      "ndv": 0
+    }
+  },
+  "n_pages": 0,
+  "n_tuples": 0,
+  "width": 0.0
+}

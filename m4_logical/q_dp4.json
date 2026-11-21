@@ -1,0 +1,28 @@
+{
+  "op": "join",
+  "condition": "Products.supplier_id = Suppliers.supplier_id",
+  "left": {
+    "op": "join",
+    "condition": "Orders.product_id = Products.product_id",
+    "left": {
+      "op": "join",
+      "condition": "Customers.cust_id = Orders.cust_id",
+      "left": {
+        "op": "scan",
+        "table": "Customers"
+      },
+      "right": {
+        "op": "scan",
+        "table": "Orders"
+      }
+    },
+    "right": {
+      "op": "scan",
+      "table": "Products"
+    }
+  },
+  "right": {
+    "op": "scan",
+    "table": "Suppliers"
+  }
+}

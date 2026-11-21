@@ -1,0 +1,64 @@
+{
+  "op": "group_by",
+  "mode": "hash",
+  "keys": [
+    "c.region"
+  ],
+  "aggregates": [
+    [
+      "count",
+      "*",
+      "n"
+    ]
+  ],
+  "child": {
+    "op": "project",
+    "columns": [
+      "c.region"
+    ],
+    "child": {
+      "op": "nested_loop_join",
+      "condition": "c.cust_id = o.cust_id",
+      "left": {
+        "op": "project",
+        "columns": [
+          "o.cust_id"
+        ],
+        "child": {
+          "op": "filter",
+          "condition": "o.amount > 700",
+          "child": {
+            "op": "rename",
+            "to": "o",
+            "child": {
+              "op": "project",
+              "columns": [
+                "Orders.cust_id",
+                "Orders.amount"
+              ],
+              "child": {
+                "op": "seqscan",
+                "table": "Orders"
+              }
+            }
+          }
+        }
+      },
+      "right": {
+        "op": "rename",
+        "to": "c",
+        "child": {
+          "op": "project",
+          "columns": [
+            "Customers.cust_id",
+            "Customers.region"
+          ],
+          "child": {
+            "op": "seqscan",
+            "table": "Customers"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "op": "project",
+  "columns": [
+    "o.order_id",
+    "p.product_id"
+  ],
+  "child": {
+    "op": "filter",
+    "condition": "o.amount < 100 AND p.price > 700",
+    "child": {
+      "op": "nested_loop_join",
+      "condition": "o.product_id = p.product_id",
+      "left": {
+        "op": "rename",
+        "to": "o",
+        "child": {
+          "op": "seqscan",
+          "table": "Orders"
+        }
+      },
+      "right": {
+        "op": "rename",
+        "to": "p",
+        "child": {
+          "op": "seqscan",
+          "table": "Products"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "op": "project",
+  "columns": [
+    "c.id",
+    "c.p1",
+    "c.p2",
+    "c.p3",
+    "c.p4",
+    "c.p5",
+    "c.p6",
+    "c.p7",
+    "p.p1",
+    "p.p2",
+    "p.p3",
+    "p.p4",
+    "p.p5",
+    "p.p6",
+    "p.p7"
+  ],
+  "child": {
+    "op": "hash_join",
+    "condition": "c.id = p.id",
+    "left": {
+      "op": "project",
+      "columns": [
+        "c.id",
+        "c.p1",
+        "c.p2",
+        "c.p3",
+        "c.p4",
+        "c.p5",
+        "c.p6",
+        "c.p7"
+      ],
+      "child": {
+        "op": "filter",
+        "condition": "c.region = 1",
+        "child": {
+          "op": "project",
+          "columns": [
+            "c.id",
+            "c.region",
+            "c.p1",
+            "c.p2",
+            "c.p3",
+            "c.p4",
+            "c.p5",
+            "c.p6",
+            "c.p7"
+          ],
+          "child": {
+            "op": "filter",
+            "condition": "c.segment = 1",
+            "child": {
+              "op": "seqscan",
+              "table": "CorrCustomers",
+              "alias": "c"
+            }
+          }
+        }
+      }
+    },
+    "right": {
+      "op": "seqscan",
+      "table": "CorrProbe",
+      "alias": "p"
+    }
+  }
+}

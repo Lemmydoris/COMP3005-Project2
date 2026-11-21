@@ -1,0 +1,18 @@
+{
+  "op": "project",
+  "columns": [
+    "c.cust_id"
+  ],
+  "child": {
+    "op": "filter",
+    "condition": "c.region = 1 AND c.segment = 1",
+    "child": {
+      "op": "rename",
+      "to": "c",
+      "child": {
+        "op": "seqscan",
+        "table": "Customers"
+      }
+    }
+  }
+}

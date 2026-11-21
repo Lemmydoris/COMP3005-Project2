@@ -1,0 +1,112 @@
+{
+  "op": "project",
+  "columns": [
+    "c.cust_id",
+    "s.supplier_id"
+  ],
+  "child": {
+    "op": "project",
+    "columns": [
+      "c.cust_id",
+      "s.supplier_id"
+    ],
+    "child": {
+      "op": "nested_loop_join",
+      "condition": "p.supplier_id = s.supplier_id",
+      "left": {
+        "op": "project",
+        "columns": [
+          "c.cust_id",
+          "p.supplier_id"
+        ],
+        "child": {
+          "op": "filter",
+          "condition": "c.region = 5",
+          "child": {
+            "op": "project",
+            "columns": [
+              "c.cust_id",
+              "c.region",
+              "p.supplier_id"
+            ],
+            "child": {
+              "op": "nested_loop_join",
+              "condition": "o.product_id = p.product_id",
+              "left": {
+                "op": "project",
+                "columns": [
+                  "c.cust_id",
+                  "c.region",
+                  "o.product_id"
+                ],
+                "child": {
+                  "op": "nested_loop_join",
+                  "condition": "c.cust_id = o.cust_id",
+                  "left": {
+                    "op": "rename",
+                    "to": "c",
+                    "child": {
+                      "op": "project",
+                      "columns": [
+                        "Customers.cust_id",
+                        "Customers.region"
+                      ],
+                      "child": {
+                        "op": "seqscan",
+                        "table": "Customers"
+                      }
+                    }
+                  },
+                  "right": {
+                    "op": "rename",
+                    "to": "o",
+                    "child": {
+                      "op": "project",
+                      "columns": [
+                        "Orders.cust_id",
+                        "Orders.product_id"
+                      ],
+                      "child": {
+                        "op": "seqscan",
+                        "table": "Orders"
+                      }
+                    }
+                  }
+                }
+              },
+              "right": {
+                "op": "rename",
+                "to": "p",
+                "child": {
+                  "op": "project",
+                  "columns": [
+                    "Products.product_id",
+                    "Products.supplier_id"
+                  ],
+                  "child": {
+                    "op": "seqscan",
+                    "table": "Products"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "right": {
+        "op": "rename",
+        "to": "s",
+        "child": {
+          "op": "project",
+          "columns": [
+            "Suppliers.supplier_id"
+          ],
+          "child": {
+            "op": "seqscan",
+            "table": "Suppliers"
+          }
+        }
+      }
+    }
+  }
+}

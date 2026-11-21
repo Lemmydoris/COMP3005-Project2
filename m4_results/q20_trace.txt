@@ -1,0 +1,6 @@
+limit 20                     tuples_out=20     comparisons=0        reads=0      writes=0
+  sort                         tuples_out=20     comparisons=116825   reads=0      writes=0
+    Rename                       tuples_out=10181  comparisons=0        reads=0      writes=0
+      filter (Orders.amount > 500) tuples_out=10181  comparisons=20000    reads=0      writes=0
+        project                      tuples_out=20000  comparisons=0        reads=0      writes=0
+          seqscan Orders               tuples_out=20000  comparisons=0        reads=100    writes=0

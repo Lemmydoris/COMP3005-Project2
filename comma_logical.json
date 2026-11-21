@@ -1,0 +1,1 @@
+{"op":"project","columns":["R.a","R.b","S.b","S.c"],"child":{"op":"select","condition":"R.b = S.b","child":{"op":"cross","left":{"op":"scan","table":"R"},"right":{"op":"scan","table":"S"}}}}

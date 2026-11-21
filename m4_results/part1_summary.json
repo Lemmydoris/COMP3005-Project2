@@ -1,0 +1,18 @@
+{
+  "queries_completed": 20,
+  "nodes_measured": 228,
+  "median_q_error": 1.0,
+  "worst_q_error": 400000000.0,
+  "worst_node": {
+    "query": "q12",
+    "node": 1,
+    "depth": 0,
+    "operator": "project",
+    "estimated_rows": 400000000.0,
+    "actual_rows": 0,
+    "q_error": 400000000.0,
+    "reads": 0,
+    "writes": 0
+  },
+  "optimized_total_io": 1767
+}

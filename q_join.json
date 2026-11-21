@@ -1,0 +1,12 @@
+{
+  "op": "join",
+  "condition": "R.b = S.b",
+  "left": {
+    "op": "scan",
+    "table": "R"
+  },
+  "right": {
+    "op": "scan",
+    "table": "S"
+  }
+}

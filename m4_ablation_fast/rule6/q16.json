@@ -1,0 +1,43 @@
+{
+  "op": "project",
+  "columns": [
+    "c.cust_id",
+    "s.supplier_id"
+  ],
+  "child": {
+    "op": "nested_loop_join",
+    "condition": "p.supplier_id = s.supplier_id",
+    "left": {
+      "op": "filter",
+      "condition": "c.region = 5",
+      "child": {
+        "op": "nested_loop_join",
+        "condition": "o.product_id = p.product_id",
+        "left": {
+          "op": "nested_loop_join",
+          "condition": "c.cust_id = o.cust_id",
+          "left": {
+            "op": "seqscan",
+            "table": "Customers",
+            "alias": "c"
+          },
+          "right": {
+            "op": "seqscan",
+            "table": "Orders",
+            "alias": "o"
+          }
+        },
+        "right": {
+          "op": "seqscan",
+          "table": "Products",
+          "alias": "p"
+        }
+      }
+    },
+    "right": {
+      "op": "seqscan",
+      "table": "Suppliers",
+      "alias": "s"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560">
+<rect width="100%" height="100%" fill="white"/>
+<text x="450.0" y="28" text-anchor="middle" font-family="Arial" font-size="20">Join Crossover: Fixed 64-page Relations</text>
+<line x1="85" y1="55" x2="85" y2="485" stroke="black"/>
+<line x1="85" y1="485" x2="865" y2="485" stroke="black"/>
+<line x1="80" y1="485.0" x2="865" y2="485.0" stroke="black" stroke-opacity="0.15"/>
+<text x="75" y="490.0" text-anchor="end" font-family="Arial" font-size="12">0</text>
+<line x1="80" y1="399.0" x2="865" y2="399.0" stroke="black" stroke-opacity="0.15"/>
+<text x="75" y="404.0" text-anchor="end" font-family="Arial" font-size="12">429</text>
+<line x1="80" y1="313.0" x2="865" y2="313.0" stroke="black" stroke-opacity="0.15"/>
+<text x="75" y="318.0" text-anchor="end" font-family="Arial" font-size="12">858</text>
+<line x1="80" y1="227.0" x2="865" y2="227.0" stroke="black" stroke-opacity="0.15"/>
+<text x="75" y="232.0" text-anchor="end" font-family="Arial" font-size="12">1287</text>
+<line x1="80" y1="141.0" x2="865" y2="141.0" stroke="black" stroke-opacity="0.15"/>
+<text x="75" y="146.0" text-anchor="end" font-family="Arial" font-size="12">1716</text>
+<line x1="80" y1="55.0" x2="865" y2="55.0" stroke="black" stroke-opacity="0.15"/>
+<text x="75" y="60.0" text-anchor="end" font-family="Arial" font-size="12">2145</text>
+<line x1="85.0" y1="485" x2="85.0" y2="491" stroke="black"/>
+<text x="85.0" y="509" text-anchor="middle" font-family="Arial" font-size="12">4</text>
+<line x1="215.0" y1="485" x2="215.0" y2="491" stroke="black"/>
+<text x="215.0" y="509" text-anchor="middle" font-family="Arial" font-size="12">8</text>
+<line x1="345.0" y1="485" x2="345.0" y2="491" stroke="black"/>
+<text x="345.0" y="509" text-anchor="middle" font-family="Arial" font-size="12">16</text>
+<line x1="475.0" y1="485" x2="475.0" y2="491" stroke="black"/>
+<text x="475.0" y="509" text-anchor="middle" font-family="Arial" font-size="12">32</text>
+<line x1="605.0" y1="485" x2="605.0" y2="491" stroke="black"/>
+<text x="605.0" y="509" text-anchor="middle" font-family="Arial" font-size="12">64</text>
+<line x1="735.0" y1="485" x2="735.0" y2="491" stroke="black"/>
+<text x="735.0" y="509" text-anchor="middle" font-family="Arial" font-size="12">128</text>
+<line x1="865.0" y1="485" x2="865.0" y2="491" stroke="black"/>
+<text x="865.0" y="509" text-anchor="middle" font-family="Arial" font-size="12">256</text>
+<polyline points="85.0,55.0 215.0,328.6363636363636 345.0,406.8181818181818 475.0,432.8787878787879 605.0,445.9090909090909 735.0,458.93939393939394 865.0,458.93939393939394" fill="none" stroke="black" stroke-width="2"/>
+<polyline points="85.0,282.52913752913753 215.0,337.05594405594405 345.0,381.960372960373 475.0,381.960372960373 605.0,433.27972027972027 735.0,433.27972027972027 865.0,433.27972027972027" fill="none" stroke="black" stroke-width="2" stroke-dasharray="10 5"/>
+<polyline points="85.0,277.1165501165501 215.0,395.3916083916084 345.0,407.62004662004665 475.0,407.62004662004665 605.0,407.62004662004665 735.0,407.62004662004665 865.0,407.62004662004665" fill="none" stroke="black" stroke-width="2" stroke-dasharray="3 4"/>
+<text x="475.0" y="538" text-anchor="middle" font-family="Arial" font-size="14">Buffer frames B</text>
+<text x="20" y="270.0" text-anchor="middle" font-family="Arial" font-size="14" transform="rotate(-90 20 270.0)">Measured page I/O</text>
+<line x1="660" y1="52" x2="710" y2="52" stroke="black" stroke-width="2"/>
+<text x="720" y="57" font-family="Arial" font-size="12">nested_loop_join</text>
+<line x1="660" y1="74" x2="710" y2="74" stroke="black" stroke-width="2" stroke-dasharray="10 5"/>
+<text x="720" y="79" font-family="Arial" font-size="12">sort_merge_join</text>
+<line x1="660" y1="96" x2="710" y2="96" stroke="black" stroke-width="2" stroke-dasharray="3 4"/>
+<text x="720" y="101" font-family="Arial" font-size="12">hash_join</text>
+</svg>

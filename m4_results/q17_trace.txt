@@ -1,0 +1,7 @@
+Rename                       tuples_out=40     comparisons=0        reads=0      writes=0
+  project                      tuples_out=40     comparisons=0        reads=0      writes=0
+    filter (Products.category = 7) tuples_out=40     comparisons=798      reads=0      writes=0
+      project                      tuples_out=798    comparisons=0        reads=0      writes=0
+        filter (Products.price > 600) tuples_out=798    comparisons=2000     reads=0      writes=0
+          project                      tuples_out=2000   comparisons=0        reads=0      writes=0
+            seqscan Products             tuples_out=2000   comparisons=0        reads=11     writes=0

@@ -1,0 +1,1 @@
+{"op":"project","columns":["p.product_id","s.supplier_id"],"child":{"op":"select","condition":"s.region = 2","child":{"op":"join","condition":"p.supplier_id = s.supplier_id","left":{"op":"rename","to":"p","child":{"op":"scan","table":"Products"}},"right":{"op":"rename","to":"s","child":{"op":"scan","table":"Suppliers"}}}}}

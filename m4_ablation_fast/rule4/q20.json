@@ -1,0 +1,32 @@
+{
+  "op": "limit",
+  "n": 20,
+  "child": {
+    "op": "sort",
+    "keys": [
+      [
+        "o.amount",
+        "desc"
+      ]
+    ],
+    "child": {
+      "op": "filter",
+      "condition": "o.amount > 500",
+      "child": {
+        "op": "rename",
+        "to": "o",
+        "child": {
+          "op": "project",
+          "columns": [
+            "Orders.order_id",
+            "Orders.amount"
+          ],
+          "child": {
+            "op": "seqscan",
+            "table": "Orders"
+          }
+        }
+      }
+    }
+  }
+}

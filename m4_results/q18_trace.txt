@@ -1,0 +1,6 @@
+group_by sort                tuples_out=10     comparisons=22334    reads=0      writes=0
+  Rename                       tuples_out=2777   comparisons=0        reads=0      writes=0
+    project                      tuples_out=2777   comparisons=0        reads=0      writes=0
+      filter (Customers.age > 40)  tuples_out=2777   comparisons=5000     reads=0      writes=0
+        project                      tuples_out=5000   comparisons=0        reads=0      writes=0
+          seqscan Customers            tuples_out=5000   comparisons=0        reads=26     writes=0

@@ -1,0 +1,1 @@
+{"op":"limit","n":20,"child":{"op":"sort","keys":[["o.amount","desc"]],"child":{"op":"project","columns":["o.order_id","o.amount"],"child":{"op":"select","condition":"o.amount > 500","child":{"op":"rename","to":"o","child":{"op":"scan","table":"Orders"}}}}}}

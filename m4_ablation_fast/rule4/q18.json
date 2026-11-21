@@ -1,0 +1,39 @@
+{
+  "op": "group_by",
+  "mode": "sort",
+  "keys": [
+    "c.region"
+  ],
+  "aggregates": [
+    [
+      "count",
+      "*",
+      "n"
+    ]
+  ],
+  "child": {
+    "op": "project",
+    "columns": [
+      "c.region"
+    ],
+    "child": {
+      "op": "filter",
+      "condition": "c.age > 40",
+      "child": {
+        "op": "rename",
+        "to": "c",
+        "child": {
+          "op": "project",
+          "columns": [
+            "Customers.region",
+            "Customers.age"
+          ],
+          "child": {
+            "op": "seqscan",
+            "table": "Customers"
+          }
+        }
+      }
+    }
+  }
+}

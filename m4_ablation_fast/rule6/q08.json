@@ -1,0 +1,25 @@
+{
+  "op": "project",
+  "columns": [
+    "p.product_id",
+    "s.supplier_id"
+  ],
+  "child": {
+    "op": "nested_loop_join",
+    "condition": "p.supplier_id = s.supplier_id",
+    "left": {
+      "op": "filter",
+      "condition": "s.region = 2",
+      "child": {
+        "op": "seqscan",
+        "table": "Suppliers",
+        "alias": "s"
+      }
+    },
+    "right": {
+      "op": "seqscan",
+      "table": "Products",
+      "alias": "p"
+    }
+  }
+}

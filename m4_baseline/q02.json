@@ -1,0 +1,18 @@
+{
+  "op": "project",
+  "columns": [
+    "p.product_id"
+  ],
+  "child": {
+    "op": "filter",
+    "condition": "p.price > 500",
+    "child": {
+      "op": "rename",
+      "to": "p",
+      "child": {
+        "op": "seqscan",
+        "table": "Products"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "op": "project",
+  "columns": [
+    "c.cust_id",
+    "o.order_id"
+  ],
+  "child": {
+    "op": "nested_loop_join",
+    "condition": "c.cust_id = o.cust_id",
+    "left": {
+      "op": "filter",
+      "condition": "o.amount > 900",
+      "child": {
+        "op": "seqscan",
+        "table": "Orders",
+        "alias": "o"
+      }
+    },
+    "right": {
+      "op": "filter",
+      "condition": "c.region = 3",
+      "child": {
+        "op": "seqscan",
+        "table": "Customers",
+        "alias": "c"
+      }
+    }
+  }
+}

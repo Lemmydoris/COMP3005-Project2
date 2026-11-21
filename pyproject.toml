@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "comp3005-project2"
+version = "0.1.0"
+description = "COMP 3005 Project 2 database system"
+requires-python = ">=3.11"
+
+[project.scripts]
+storage = "storage.cli:main"
+exec = "execution.cli:main"
+sql = "sql_frontend.cli:main"
+opt = "optimizer.cli:main"
+
+[tool.setuptools]
+py-modules = [
+    "parser",
+    "tokenizer",
+    "ra",
+    "ra_tree",
+    "relation_loader",
+    "operators",
+    "cli_output",
+    "generator"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["storage*", "execution*", "sql_frontend*", "optimizer*"]
