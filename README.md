@@ -1,4 +1,4 @@
-# COMP 3005 Bonus Project 1
+# COMP 3005 Bonus Project 2
 ## Relational Algebra Engine
 
 This project implements a small relational algebra engine in Python. It includes a hand-written tokenizer, recursive descent parser, parse-tree printer, relational algebra evaluator, relation-definition loader, error handling, test suite, data generator, and performance instrumentation.
